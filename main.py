@@ -7,6 +7,25 @@ from typing import List, Optional
 import math
 import os
 
+
+import logging, sys, platform
+
+logger = logging.getLogger("uvicorn.error")
+
+@app.on_event("startup")
+async def _startup():
+    logger.info("=== Startup diagnostics ===")
+    logger.info("Python: %s", sys.version)
+    logger.info("Platform: %s", platform.platform())
+    logger.info("Working dir files: %s", os.listdir("."))
+    logger.info("Static dir exists? %s", os.path.isdir("static"))
+    logger.info("Template index exists? %s", os.path.isfile("index.html"))
+    logger.info("===========================")
+
+@app.get("/healthz")
+async def healthz():
+    return {"ok": True, "python": sys.version.split()[0]}
+
 app = FastAPI()
 
 # Serve static files if present
