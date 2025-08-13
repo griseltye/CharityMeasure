@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>The Eight Gates of Charity — v13</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script defer src="/static/app.js"></script>
+  <style>
+    @media print { .no-print { display:none !important; } body { margin:0.5in; } input, button, select { display:none !important; } }
+    body { font-family: Arial, Helvetica, sans-serif; margin: 8px; }
+    table { border-collapse: separate; border-spacing: 6px; width: 100%; }
+    th, td { border: none !important; padding: 8px 10px; }
+    .banner { text-align:center; font-weight:900; }
+    .b1 { background:#d9ead3; font-size:28px; }
+    .b2 { background:#1f4e79; color:#fff; font-size:16px; }
+    .b3 { background:#f6b26b; color:#000; font-size:14px; }
+    .b4 { background:#00b050; color:#000; font-size:18px; }
+    .b5 { background:#ff0000; color:#fff; font-size:18px; }
+    .hdr { background:#f6b26b; color:#000; text-transform:uppercase; font-weight:800; }
+    .hdr th { font-size:14px; }
+    .yellow input { width:100%; background:#fff59d; border: none; outline: none; padding:6px; font-weight:700; font-size:16px; }
+    .m1 { background:#eee; font-weight:700; text-transform:uppercase; }
+    .m2 { background:#c00000; color:#fff; font-weight:700; text-transform:uppercase; }
+    .row18 td { background:#274e8a; color:#fff; font-weight:900; text-transform:uppercase; }
+    .row19 td { background:#38761d; color:#fff; font-weight:900; text-transform:uppercase; }
+
+    :root {
+      --row20-orange: #E97F2B;
+      --row20-red:    #D00000;
+      --row20-white:  #FFFFFF;
+    }
+    .row20 td {
+      background: var(--row20-orange);
+      color: var(--row20-white);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+    .row20 .r20h {
+      background: var(--row20-red) !important;
+      text-align: center;
+      padding-top: 8px; padding-bottom: 8px;
+    }
+    #r20_script {
+      font-style: italic;
+      text-align: center;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+    #r20_mid, #r20_short {
+      font-size: 20px;
+      font-weight: 800;
+      text-align: center;
+    }
+    .num { text-align:center; font-size:20px; }
+    .btn { border:1px solid #ccc; background:#fff; padding:8px 12px; border-radius:8px; cursor:pointer; }
+  </style>
+</head>
+<body>
+  <div class="no-print" style="margin-bottom:8px; display:flex; gap:12px; align-items:center;">
+    <button class="btn" onclick="window.print()">Save as PDF</button>
+    <label>Accept Jesus? 
+      <select id="d19">
+        <option value="">—</option>
+        <option value="Y">Y</option>
+        <option value="N">N</option>
+      </select>
+    </label>
+  </div>
+
+  <table>
+    <tr><td class="banner b1" colspan="4">THE EIGHT GATES OF CHARITY</td></tr>
+    <tr><td class="banner b2" colspan="4">FAITH, HOPE, CHARITY, ABIDETH THESE THREE; BUT THE GREATEST OF THESE IS CHARITY;</td></tr>
+    <tr><td class="banner b3" colspan="4">THE REFINERS FIRE AND BEGINNING EMBERS OF YOUR PERSONAL TRUTH... THE WHO OF YOU!!!</td></tr>
+    <tr><td class="banner b4" colspan="4">ENTER ( 10 ) FOR JESUS' PERFECTION</td></tr>
+    <tr><td class="banner b5" colspan="4">ENTER ( 0 ) FOR SATANIC DEFECTION</td></tr>
+    <tr class="hdr">
+      <th style="width:40%;">5.1</th>
+      <th style="width:10%;">SELF MEASURE</th>
+      <th style="width:25%;">SUMMARY</th>
+      <th style="width:25%;">SUMMARY</th>
+    </tr>
+
+    <!-- Gate rows -->
+    {% for i in range(8) %}
+    <tr>
+      <td>{{ labels[i] or ('Gate ' ~ (i+1)) }}</td>
+      <td class="yellow"><input id="d{{ 8+i }}" type="number" min="0" max="10" step="1" value="0" /></td>
+      <td class="m1" id="m1_{{ i }}"></td>
+      <td class="m2" id="m2_{{ i }}"></td>
+    </tr>
+    {% endfor %}
+
+    <!-- Row 16 -->
+    <tr>
+      <td style="background:#a61c00; color:#fff; font-weight:900; text-transform:uppercase;">
+        Your Score Adjusted for all Inputs:
+        <div class="num" id="r16_left_val"></div>
+      </td>
+      <td style="background:#cc0000; color:#fff; font-weight:900; text-transform:uppercase;">
+        Your Total Score out of 80 Possible
+        <div class="num" id="r16_mid_val"></div>
+      </td>
+      <td style="background:#990000; color:#fff; font-weight:900; text-transform:uppercase; text-align:center;" id="r16_right1">YOU ARE LOST</td>
+      <td style="background:#cc0000; color:#fff; font-weight:900; text-transform:uppercase; text-align:center;" id="r16_right2">AND, YOU EMBRACE SELFISHNESS!!!</td>
+    </tr>
+
+    <!-- Row 17 -->
+    <tr>
+      <td style="background:#1e1e1e; color:#fff; font-weight:900;" colspan="1">80 Points Possible plus Jesus = 81.0 Possible</td>
+      <td style="background:#1e1e1e; color:#fff;" colspan="1"><div class="num" id="b17_val"></div></td>
+      <td style="background:#1e1e1e; color:#fff;" colspan="2">
+        81 is the only Perfect Number. Why? Because it is the only number that, when 1 is divided by its value, provides an infinite number of whole numbers. Hence, it is Wholly. So then, and numerically only, only 80 points are possible, when you add the ONE you TRUST most in life, it equals 81.
+      </td>
+    </tr>
+  </table>
+
+  <table>
+    <!-- Row 18 -->
+    <tr class="row18">
+      <td>SELF-EXAMINATION</td>
+      <td>YOUR SCORE <span id="r18_score"></span></td>
+      <td colspan="2" id="r18_text"></td>
+    </tr>
+
+    <!-- Row 19 -->
+    <tr class="row19">
+      <td>DO YOU ACCEPT JESUS INTO YOUR  LIFE?</td>
+      <td id="r19_msg"></td>
+      <td colspan="2" id="r19_script"></td>
+    </tr>
+
+    <!-- Row 20 header row -->
+    <tr class="row20">
+      <td id="r20_left" style="text-align:left;">JESUS ADDS TO YOUR EFFORT</td>
+      <td class="r20h" id="r20_header_adds">JESUS ADDS</td>
+      <td class="r20h">POINTS SHORT OF THE GLORY OF GOD</td>
+      <td id="r20_script" style="font-style:italic; text-align:center;"></td>
+    </tr>
+
+    <!-- Row 20 numeric row -->
+    <tr class="row20">
+      <td style="background:transparent;"></td>
+      <td id="r20_mid" style="text-align:center;"></td>
+      <td id="r20_short" style="text-align:center;"></td>
+      <td style="background:transparent;"></td>
+    </tr>
+
+    <!-- Row 21 -->
+    <tr class="row21" style="background:#6aa84f; color:#fff; font-weight:900; text-transform:uppercase;">
+      <td id="r21_left">YOUR SCORE WITH JESUS ADDED</td>
+      <td id="r21_mid"></td>
+      <td colspan="2" id="r21_script"></td>
+    </tr>
+
+    <!-- Row 22 -->
+    <tr class="row22" style="background:#e69138; color:#fff; font-weight:900; text-transform:uppercase;">
+      <td id="r22_left"></td>
+      <td colspan="3" id="r22_right" style="text-align:center;"></td>
+    </tr>
+  </table>
+</body>
+</html>
